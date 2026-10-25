@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Cloud Tony Bakery infrastructure as code
+
+Resources:
+
+  BakeryOrdersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cloud-tony-bakery-orders-iac
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: orderId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: orderId
+          KeyType: HASH
+      Tags:
+        - Key: Project
+          Value: CloudTonyBakery
+        - Key: Owner
+          Value: TonyReza
+
+Outputs:
+
+  OrdersTableName:
+    Description: DynamoDB table created through CloudFormation
+    Value: !Ref BakeryOrdersTable

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cloud Tony Bakery</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3b1d10;
+    background:
+        linear-gradient(
+            to bottom,
+            #f8f2e8 0%,
+            #f5ecdf 72%,
+            #9a6037 72%,
+            #704225 100%
+        );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.page {
+    width: 100%;
+    max-width: 850px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.chef-icon {
+    font-size: 55px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 52px;
+    color: #3a1709;
+}
+
+.divider {
+    width: 300px;
+    max-width: 80%;
+    height: 2px;
+    background: #c88a48;
+    margin: 15px auto 0;
+    position: relative;
+}
+
+.divider::after {
+    content: "◆";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -53%);
+    background: #f6eee3;
+    padding: 0 12px;
+    color: #b66a2c;
+    font-size: 13px;
+}
+
+.order-card {
+    background: rgba(255, 252, 247, 0.97);
+    border: 1px solid #ead8c4;
+    border-radius: 18px;
+    padding: 35px 42px;
+    box-shadow: 0 12px 35px rgba(55, 28, 12, 0.18);
+}
+
+.order-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #ead8c4;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.pastry-icon {
+    font-size: 42px;
+}
+
+h2 {
+    margin: 0 0 5px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    color: #3a1709;
+}
+
+.order-title p {
+    margin: 0;
+    color: #6e665f;
+    font-size: 17px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #cfc7bd;
+    border-radius: 8px;
+    background: white;
+    font-size: 16px;
+    color: #2f241f;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #c66a2b;
+    border-color: transparent;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button {
+    margin-top: 28px;
+    min-width: 300px;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8f350d, #bd5419);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(80, 30, 8, 0.18);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #762b0a, #a84312);
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+#result {
+    display: none;
+    margin-top: 28px;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+#result.success {
+    display: block;
+    background: #e5f6e8;
+    border: 1px solid #a8d8ae;
+    color: #176326;
+}
+
+#result.error {
+    display: block;
+    background: #fae8e6;
+    border: 1px solid #e2aaa4;
+    color: #8c231b;
+}
+
+.footer {
+    text-align: center;
+    color: #f7eee5;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 38px;
+    }
+
+    .order-card {
+        padding: 25px 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    button {
+        width: 100%;
+        min-width: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="header">
+        <div class="chef-icon">♨</div>
+        <h1>Cloud Tony Bakery</h1>
+        <div class="divider"></div>
+    </div>
+
+    <div class="order-card">
+
+        <div class="order-title">
+            <div class="pastry-icon">🥐</div>
+
+            <div>
+                <h2>Place Your Order</h2>
+                <p>Choose a delicious item from our bakery and we'll get it ready!</p>
+            </div>
+        </div>
+
+        <label for="customerName">Customer Name</label>
+
+        <input
+            id="customerName"
+            type="text"
+            placeholder="Enter your name"
+        >
+
+        <label for="item">Bakery Item</label>
+
+        <select id="item">
+            <option value="Chocolate Croissant">Chocolate Croissant</option>
+            <option value="Chocolate Cake">Chocolate Cake</option>
+            <option value="Blueberry Muffin">Blueberry Muffin</option>
+            <option value="Sourdough Bread">Sourdough Bread</option>
+        </select>
+
+        <div class="button-container">
+            <button id="submitButton" type="button">
+                Submit Order
+            </button>
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+    <div class="footer">
+        Cloud Tony Bakery
+    </div>
+
+</div>
+
+<script>
+document.getElementById("submitButton").onclick = async function () {
+
+    const name = document.getElementById("customerName").value.trim();
+    const item = document.getElementById("item").value;
+    const result = document.getElementById("result");
+    const button = document.getElementById("submitButton");
+
+    if (name === "") {
+        result.className = "error";
+        result.innerHTML = "<strong>Please enter your name.</strong>";
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Submitting Order...";
+
+    try {
+
+        const response = await fetch(
+            "https://704ibc59ba.execute-api.us-west-2.amazonaws.com/orders",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    customerName: name,
+                    item: item
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            result.className = "success";
+
+            result.innerHTML =
+                "<strong>✓ Order received by Cloud Tony Bakery!</strong><br>" +
+                "Order ID: " + data.orderId;
+
+        } else {
+
+            result.className = "error";
+            result.innerHTML =
+                "<strong>Unable to process your order.</strong>";
+        }
+
+    } catch (error) {
+
+        console.error("Order error:", error);
+
+        result.className = "error";
+        result.innerHTML =
+            "<strong>Unable to connect to the order service.</strong>";
+    }
+
+    button.disabled = false;
+    button.textContent = "Submit Order";
+};
+</script>
+
+</body>
+</html>
